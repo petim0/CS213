@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08608467, g: 0.06778772, b: 0.092719786, a: 1}
+  m_IndirectSpecularColor: {r: 0.08608446, g: 0.06778752, b: 0.092719994, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -803,7 +803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149539499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.478, y: 0, z: -2.48}
+  m_LocalPosition: {x: 4.89, y: 0, z: -2.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1366235341}
@@ -1202,6 +1202,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4214186027875092558, guid: d44936f6062330e28ab4d37456de1881, type: 3}
   m_PrefabInstance: {fileID: 1366235340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1469719192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4052793752220753789, guid: 6f5f6d7624c2ce5cc8896e584e30f1c5, type: 3}
+  m_PrefabInstance: {fileID: 1964201192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1469719197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469719192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d07190bba2ba384ab93251a693acffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  inputKeyboard: 0
 --- !u!1 &1501187493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1374,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5949435046076350016, guid: dbe836a054f552f40920e331a2a2b469, type: 3}
   m_PrefabInstance: {fileID: 1670613848}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1722409577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3040563576298773591, guid: d44936f6062330e28ab4d37456de1881, type: 3}
+  m_PrefabInstance: {fileID: 1366235340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722409578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722409577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d07190bba2ba384ab93251a693acffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  inputKeyboard: 1
 --- !u!4 &1830451768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1300460603662249420, guid: 6f5f6d7624c2ce5cc8896e584e30f1c5, type: 3}
