@@ -13,16 +13,8 @@ public class AgentBehaviour : MonoBehaviour
 
     public void Start()
     {
-        //Set the tag of this GameObject to Player
-        gameObject.tag = "Player";
-        sheeps = GameObject.FindGameObjectsWithTag("Sheep");
-        players = GameObject.FindGameObjectsWithTag("Player");
-        
-        if (players.Length < minNumberPlayer) {
-            Debug.Log("Not enough Players to start the Game, don't you have friends?");
-        }
-    }
 
+    }
 
     public virtual void Awake()
     {
