@@ -1,9 +1,20 @@
 using UnityEngine;
-using System.Collections;
+
 public class AgentBehaviour : MonoBehaviour
 {
     public float weight = 1.0f;
     protected CelluloAgent agent;
+
+    public GameObject[] sheeps;
+    public GameObject[] players;
+
+    const int minNumberPlayer = 2;
+
+
+    public void Start()
+    {
+
+    }
 
     public virtual void Awake()
     {
