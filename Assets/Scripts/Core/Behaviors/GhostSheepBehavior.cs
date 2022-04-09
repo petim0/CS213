@@ -5,13 +5,14 @@ public class GhostSheepBehavior : AgentBehaviour
     const string ennemiesTag1 = "Player1";
     const string ennemiesTag2 = "Player2";
     const int detectionRadius = 50;
+    const int escapeRadius = 70;
     const float minGhostTimer = 5.0f;
     const float maxGhostTimer = 15.0f;
     bool isGhost = false;
     const float minSwitchBackTimer = 15.0f;
     const float maxSwitchBackTimer = 35.0f;
     
-    Color colorSheep = new Color(0, 0, 255);
+    Color colorSheep = new Color(0, 255, 0);
     AudioClip soundSheep;
     
     Color colorGhost = new Color(255, 0, 0);
@@ -62,17 +63,18 @@ public class GhostSheepBehavior : AgentBehaviour
         int i = 0;
         foreach (GameObject ennemy in ennemies)
         {
-
             //Get distance
             Vector3 diff = new Vector3(0.0f, 0.0f, 0.0f);
             diff.x = ennemy.transform.position.x - this.transform.position.x;
             diff.z = ennemy.transform.position.z - this.transform.position.z;
 
             // Get direction from A to B
-            ennemyDirection[i] = (-diff).normalized; // from go.position to position
-            i +=1 ;
-
             float curDistance = diff.sqrMagnitude;
+            if (curDistance < escapeRadius) {
+                ennemyDirection[i] = (-diff).normalized; // from go.position to position
+                i +=1 ;
+            }
+
             if (curDistance < detectionRadius)
             {
                 ennemyIsClose = true;
@@ -80,7 +82,7 @@ public class GhostSheepBehavior : AgentBehaviour
         }
 
         Vector3 newDir = new Vector3(0.0f, 0.0f, 0.0f);
-        if (ennemyIsClose) {
+        if (ennemyIsClose && ennemyDirection.Length > 0) {
             foreach (Vector3 dir in ennemyDirection)
             {
                 newDir.x= newDir.x+dir.x;
