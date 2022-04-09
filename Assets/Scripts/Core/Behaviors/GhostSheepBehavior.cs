@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class GhostSheepBehavior : AgentBehaviour
 {    
@@ -7,6 +7,8 @@ public class GhostSheepBehavior : AgentBehaviour
     const float minGhostTimer = 5.0f;
     const float maxGhostTimer = 15.0f;
     bool isGhost = false;
+    const float minSwitchBackTimer = 15.0f;
+    const float maxSwitchBackTimer = 35.0f;
     
     Color colorSheep = new Color(0, 0, 255);
     AudioClip soundSheep;
@@ -14,19 +16,23 @@ public class GhostSheepBehavior : AgentBehaviour
     Color colorGhost = new Color(255, 0, 0);
     AudioClip soundGhost;
     AudioSource myAudioSource;
+    AudioSource myAudioSheep;
 
     void Start()
     {
+        myAudioSource = GetComponent<AudioSource>();
+        myAudioSheep = GetComponent<AudioSource>();
+        
+       // myAudioSource.stop();
         Invoke("switchBehavior", Random.Range(minGhostTimer, maxGhostTimer));
         agent.SetVisualEffect(0, colorSheep, 0);
-        m_MyAudioSource = GetComponent<AudioSource>();
-
     }
 
 
     public override Steering GetSteering()
     {
-        
+        Debug.Log("Triggered by GetSteeringSheep");
+
         Steering steering = new Steering();
         //implement your code here.
         Vector3 newDir = isGhost ? chaseDirection() : runAwayDirection();
@@ -37,6 +43,8 @@ public class GhostSheepBehavior : AgentBehaviour
     }
 
     Vector3 runAwayDirection(){
+        Debug.Log("Triggered by RUNNAWAY");
+
         GameObject[] ennemies;
         ennemies = GameObject.FindGameObjectsWithTag(ennemiesTag);
         //Check to see if the tag on the collider is equal to Enemy
@@ -75,6 +83,7 @@ public class GhostSheepBehavior : AgentBehaviour
     }
 
     Vector3 chaseDirection(){
+        Debug.Log("Triggered by ChaseDirection");
         return findClosestDirection(ennemiesTag);
     }
 
@@ -85,28 +94,35 @@ public class GhostSheepBehavior : AgentBehaviour
         if (isGhost) {
             // Set the led for the Ghost
             agent.SetVisualEffect(0, colorGhost, 0);
-
             // Stop sheep sound
-            audioSource.Stop();
+            myAudioSource.Stop();
 
             // Play ghost sound
-            audioSource.clip = soundGhost;
-            audioSource.Play();
+            myAudioSource.clip = soundGhost;
+            myAudioSource.Play();
+            myAudioSheep.Stop();
+            Debug.Log("Triggered by 1");
+            Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
         } else {
             // Set the let for the Sheep
             agent.SetVisualEffect(0, colorSheep, 0);
+            Debug.Log("Triggered by 2");
 
             // Stop ghost sound
-            audioSource.Stop();
+            myAudioSheep.Stop();
 
             // Play sheep sound
-            audioSource.clip = soundSheep;
-            audioSource.Play();
+            myAudioSource.clip = soundSheep;
+           // myAudioSheep.PlayOneShot(soundSheep, 1.0f);
+            myAudioSource.Play();
+            myAudioSheep.Stop();
+            Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
+
         }
     }
 
-    public GameObject findClosestDirection(string tag)
+    public Vector3 findClosestDirection(string tag)
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag(tag);
