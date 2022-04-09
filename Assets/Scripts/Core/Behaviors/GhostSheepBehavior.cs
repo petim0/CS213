@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class GhostSheepBehavior : AgentBehaviour
 {    
-    const string ennemiesTag = "Dog";
+    const string ennemiesTag1 = "Player1";
+    const string ennemiesTag2 = "Player2";
     const int detectionRadius = 50;
     const float minGhostTimer = 5.0f;
     const float maxGhostTimer = 15.0f;
@@ -15,23 +16,34 @@ public class GhostSheepBehavior : AgentBehaviour
     
     Color colorGhost = new Color(255, 0, 0);
     AudioClip soundGhost;
-    AudioSource myAudioSource;
-    AudioSource myAudioSheep;
+    public AudioSource myAudioSource;
+    public AudioSource myAudioSheep;
+
+    GameObject[] ennemies;
 
     void Start()
     {
-        myAudioSource = GetComponent<AudioSource>();
-        myAudioSheep = GetComponent<AudioSource>();
-        
-       // myAudioSource.stop();
+
+
+        GameObject[] ennemies1  = GameObject.FindGameObjectsWithTag(ennemiesTag1);
+        GameObject[] ennemies2 = GameObject.FindGameObjectsWithTag(ennemiesTag2);
+        ennemies = new GameObject[ennemies1.Length + ennemies2.Length];
+        ennemies1.CopyTo(ennemies, 0);
+        ennemies2.CopyTo(ennemies, ennemies1.Length);
+
+        //myAudioSource = GetComponent<AudioSource>();
+        //myAudioSheep = GetComponent<AudioSource>();
+
+        Debug.Log(myAudioSheep.Equals(myAudioSource));
+
+        // myAudioSource.stop();
         Invoke("switchBehavior", Random.Range(minGhostTimer, maxGhostTimer));
-        agent.SetVisualEffect(0, colorSheep, 0);
+        agent.SetVisualEffect(0, colorSheep, 0);   
     }
 
 
     public override Steering GetSteering()
     {
-        Debug.Log("Triggered by GetSteeringSheep");
 
         Steering steering = new Steering();
         //implement your code here.
@@ -43,10 +55,7 @@ public class GhostSheepBehavior : AgentBehaviour
     }
 
     Vector3 runAwayDirection(){
-        Debug.Log("Triggered by RUNNAWAY");
-
-        GameObject[] ennemies;
-        ennemies = GameObject.FindGameObjectsWithTag(ennemiesTag);
+        
         //Check to see if the tag on the collider is equal to Enemy
         bool ennemyIsClose = false;
         Vector3[] ennemyDirection = new[] { new Vector3 { x = 0, y = 0, z = 0 }, new Vector3 { x = 0, y = 0, z = 0} };
@@ -83,8 +92,7 @@ public class GhostSheepBehavior : AgentBehaviour
     }
 
     Vector3 chaseDirection(){
-        Debug.Log("Triggered by ChaseDirection");
-        return findClosestDirection(ennemiesTag);
+        return findClosestDirection();
     }
 
     private void switchBehavior()
@@ -94,13 +102,9 @@ public class GhostSheepBehavior : AgentBehaviour
         if (isGhost) {
             // Set the led for the Ghost
             agent.SetVisualEffect(0, colorGhost, 0);
-            // Stop sheep sound
-            myAudioSource.Stop();
-
-            // Play ghost sound
-            myAudioSource.clip = soundGhost;
+         
             myAudioSource.Play();
-            myAudioSheep.Stop();
+            
             Debug.Log("Triggered by 1");
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
@@ -109,28 +113,20 @@ public class GhostSheepBehavior : AgentBehaviour
             agent.SetVisualEffect(0, colorSheep, 0);
             Debug.Log("Triggered by 2");
 
-            // Stop ghost sound
-            myAudioSheep.Stop();
-
-            // Play sheep sound
-            myAudioSource.clip = soundSheep;
-           // myAudioSheep.PlayOneShot(soundSheep, 1.0f);
-            myAudioSource.Play();
-            myAudioSheep.Stop();
+            myAudioSheep.Play();
+            
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
         }
     }
 
-    public Vector3 findClosestDirection(string tag)
+    public Vector3 findClosestDirection()
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag(tag);
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         Vector3 direction = position;
-        foreach (GameObject go in gos)
+        foreach (GameObject go in ennemies)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
@@ -148,7 +144,7 @@ public class GhostSheepBehavior : AgentBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Check to see if the tag on the collider is equal to Enemy
-        if (other.tag == ennemiesTag)
+        if (other.tag == ennemiesTag1 && other.tag == ennemiesTag2)
         {
             Debug.Log("Triggered by Enemy");
         }
