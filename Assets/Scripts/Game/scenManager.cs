@@ -38,7 +38,7 @@ public class scenManager : MonoBehaviour
 
 
         //j'ai mis la gestion du gameover ici pour l'instant
-        if(seconds == 120){
+        if(minutes == 2){
             LoadGameOver();
         }
     }
