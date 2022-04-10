@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scenManager : MonoBehaviour
 {
 
+    public string sceneToLoad;
     public Text player1Text;
     public Text player2Text;
     public Text time;
@@ -18,7 +20,6 @@ public class scenManager : MonoBehaviour
         player1Text.text = "Player 1: " + PersistentManagerScript.Instance.player1Score.ToString();
         player2Text.text = "Player 2: " + PersistentManagerScript.Instance.player2Score.ToString();
         time.text = "00:00";
-
     }
 
     // Update is called once per frame
@@ -31,5 +32,15 @@ public class scenManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(ftime / 60);
         float seconds = Mathf.FloorToInt(ftime % 60);
         time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+
+        //j'ai mis la gestion du gameover ici pour l'instant
+        if(seconds == 15){
+            LoadGameOver();
+        }
+    }
+
+    void LoadGameOver(){
+        SceneManager.LoadScene("GameOverScene");
     }
 }
