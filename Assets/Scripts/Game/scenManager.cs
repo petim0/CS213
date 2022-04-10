@@ -37,7 +37,6 @@ public class scenManager : MonoBehaviour
         time.text = string.Format("Timer: {0:00}:{1:00}", minutes, seconds);
 
 
-        //j'ai mis la gestion du gameover ici pour l'instant
         if(minutes == 2){
             LoadGameOver();
         }
