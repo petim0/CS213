@@ -17,16 +17,19 @@ public class scenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1Text.text = "Player 1: " + PersistentManagerScript.Instance.player1Score.ToString();
-        player2Text.text = "Player 2: " + PersistentManagerScript.Instance.player2Score.ToString();
-        time.text = "00:00";
+        PersistentManagerScript.Instance.player1Score = 0;
+        PersistentManagerScript.Instance.player2Score = 0;
+
+        player1Text.text = PersistentManagerScript.Instance.player1Score.ToString("00");
+        player2Text.text = PersistentManagerScript.Instance.player2Score.ToString("00");
+        time.text = "Timer: 00:00";
     }
 
     // Update is called once per frame
     void Update()
     {
-        player1Text.text = "Player 1: " + PersistentManagerScript.Instance.player1Score.ToString();
-        player2Text.text = "Player 2: " + PersistentManagerScript.Instance.player2Score.ToString();
+        player1Text.text =  PersistentManagerScript.Instance.player1Score.ToString("00");
+        player2Text.text =  PersistentManagerScript.Instance.player2Score.ToString("00");
 
         ftime += Time.deltaTime;
         float minutes = Mathf.FloorToInt(ftime / 60);

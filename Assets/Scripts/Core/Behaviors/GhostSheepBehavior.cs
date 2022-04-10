@@ -4,13 +4,13 @@ public class GhostSheepBehavior : AgentBehaviour
 {    
     const string ennemiesTag1 = "Player1";
     const string ennemiesTag2 = "Player2";
-    const int detectionRadius = 50;
-    const int escapeRadius = 70;
+    const int detectionRadius = 20;
+    const int escapeRadius = 25;
     const float minGhostTimer = 5.0f;
     const float maxGhostTimer = 15.0f;
     bool isGhost = false;
     const float minSwitchBackTimer = 15.0f;
-    const float maxSwitchBackTimer = 35.0f;
+    const float maxSwitchBackTimer = 30.0f;
     
     Color colorSheep = new Color(0, 255, 0);    
     Color colorGhost = new Color(255, 0, 0);
@@ -170,12 +170,14 @@ public class GhostSheepBehavior : AgentBehaviour
         if (isGhost) {
             if (collision.collider.transform.parent.gameObject.CompareTag(ennemiesTag1)){
                 PersistentManagerScript.Instance.player1Score--;
+                soundLoosePoint.Play();
             }
             else if (collision.collider.transform.parent.gameObject.CompareTag(ennemiesTag2)) {
                 PersistentManagerScript.Instance.player2Score--;
+                soundLoosePoint.Play();
             }
 
-            soundLoosePoint.Play();
+            
         }
         
     }
