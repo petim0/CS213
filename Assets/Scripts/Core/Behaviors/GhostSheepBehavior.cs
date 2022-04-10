@@ -12,13 +12,15 @@ public class GhostSheepBehavior : AgentBehaviour
     const float minSwitchBackTimer = 15.0f;
     const float maxSwitchBackTimer = 35.0f;
     
-    Color colorSheep = new Color(0, 255, 0);
-    AudioClip soundSheep;
-    
+    Color colorSheep = new Color(0, 255, 0);    
     Color colorGhost = new Color(255, 0, 0);
-    AudioClip soundGhost;
+
+    
+
     public AudioSource myAudioSource;
     public AudioSource myAudioSheep;
+    public AudioSource soundLoosePoint;
+
 
     GameObject[] ennemies;
 
@@ -32,12 +34,6 @@ public class GhostSheepBehavior : AgentBehaviour
         ennemies1.CopyTo(ennemies, 0);
         ennemies2.CopyTo(ennemies, ennemies1.Length);
 
-        //myAudioSource = GetComponent<AudioSource>();
-        //myAudioSheep = GetComponent<AudioSource>();
-
-        Debug.Log(myAudioSheep.Equals(myAudioSource));
-
-        // myAudioSource.stop();
         Invoke("switchBehavior", Random.Range(minGhostTimer, maxGhostTimer));
         agent.SetVisualEffect(0, colorSheep, 0);   
     }
@@ -143,14 +139,48 @@ public class GhostSheepBehavior : AgentBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    //Pas ouf, on pourrait mettre la fonctions d'avant qui retourne un tuple mais j'ai pas le temps de tout changer
+    //A faire plus tard !!
+    public GameObject findClosestPlayer()
     {
-        //Check to see if the tag on the collider is equal to Enemy
-        if (other.tag == ennemiesTag1 && other.tag == ennemiesTag2)
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        Vector3 direction = position;
+        foreach (GameObject go in ennemies)
         {
-            Debug.Log("Triggered by Enemy");
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+                direction = diff.normalized;
+            }
         }
+        return closest;
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        Debug.Log(isGhost);
+        Debug.Log(collision.collider.transform.parent.gameObject.tag);
+        if (isGhost) {
+            if (collision.collider.transform.parent.gameObject.CompareTag(ennemiesTag1)){
+                PersistentManagerScript.Instance.player1Score--;
+            }
+            else if (collision.collider.transform.parent.gameObject.CompareTag(ennemiesTag2)) {
+                PersistentManagerScript.Instance.player2Score--;
+            }
+
+            soundLoosePoint.Play();
+        }
+        
+    }
+
+    public bool getIsGhost() {
+        return isGhost;
+    }
 }

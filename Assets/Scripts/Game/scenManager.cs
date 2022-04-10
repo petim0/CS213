@@ -31,11 +31,11 @@ public class scenManager : MonoBehaviour
         ftime += Time.deltaTime;
         float minutes = Mathf.FloorToInt(ftime / 60);
         float seconds = Mathf.FloorToInt(ftime % 60);
-        time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        time.text = string.Format("Timer: {0:00}:{1:00}", minutes, seconds);
 
 
         //j'ai mis la gestion du gameover ici pour l'instant
-        if(seconds == 15){
+        if(seconds == 120){
             LoadGameOver();
         }
     }

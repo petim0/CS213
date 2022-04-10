@@ -16,10 +16,10 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         
-        score1 = PersistentManagerScript.Instance.getPlayer1Score();
-        score2 = PersistentManagerScript.Instance.getPlayer2Score(); 
-        Debug.Log("1 "+score1);
-        Debug.Log("2 "+PersistentManagerScript.Instance.getPlayer2Score());
+        score1 = PersistentManagerScript.Instance.player1Score;
+        score2 = PersistentManagerScript.Instance.player2Score; 
+        //Debug.Log("1 "+score1);
+        //Debug.Log("2 "+PersistentManagerScript.Instance.getPlayer2Score());
         displayFollowingScore();
      //   resetGameState();
 

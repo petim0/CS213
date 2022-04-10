@@ -5,30 +5,47 @@ using UnityEngine;
 public class RingTrigger : MonoBehaviour
 {
 
+
+    public AudioSource soundWinPoint;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-     void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
 
 
-        if (other.transform.parent.gameObject.CompareTag("Player1"))
+        if (other.transform.parent.gameObject.CompareTag("ghost"))
         {
-            PersistentManagerScript.Instance.player1Score++;
+            GhostSheepBehavior ghostBehaviour = other.transform.parent.gameObject.GetComponent<GhostSheepBehavior>();
 
-        } else if (other.transform.parent.gameObject.CompareTag("Player2")) {
+            if (!ghostBehaviour.getIsGhost())
+            {
+                GameObject player = ghostBehaviour.findClosestPlayer();
+                if (player.CompareTag("Player1"))
+                {
+                    PersistentManagerScript.Instance.player1Score++;
+                }
+                else if (player.CompareTag("Player2"))
+                {
+                    PersistentManagerScript.Instance.player2Score++;
+                }
 
-            PersistentManagerScript.Instance.player2Score++;
+                soundWinPoint.Play();
+
+                Debug.Log(other.transform.parent.gameObject.tag + " triggers.");
+            }
+
+            
         }
-        
-        Debug.Log(other.transform.parent.gameObject.tag + " triggers.");
     }
 }

@@ -21,12 +21,4 @@ public class PersistentManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public int getPlayer1Score(){
-        return player1Score;
-    }
-    public int getPlayer2Score(){
-        return player2Score;
-    }
-
 }
