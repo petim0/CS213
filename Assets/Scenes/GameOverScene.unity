@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 544661457}
   - component: {fileID: 544661456}
   - component: {fileID: 544661455}
+  - component: {fileID: 544661459}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -426,10 +427,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 748872240}
-        m_TargetAssemblyTypeName: Restart, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 544661459}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MouveToScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -476,6 +477,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544661453}
   m_CullTransparentMesh: 1
+--- !u!114 &544661459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544661453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cb7a046fa1945c592bc79e258f54e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &592233529
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,9 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748872239}
-  - component: {fileID: 748872238}
   - component: {fileID: 748872237}
-  - component: {fileID: 748872240}
   m_Layer: 0
   m_Name: GameOver
   m_TagString: Untagged
@@ -839,18 +850,6 @@ MonoBehaviour:
   Player1: {fileID: 1068150129}
   Player2: {fileID: 933732079}
   draw: {fileID: 592233529}
---- !u!114 &748872238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748872236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af894261c98dd8a45810f5a92419600b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &748872239
 Transform:
   m_ObjectHideFlags: 0
@@ -863,20 +862,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &748872240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748872236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2f45f75de0a0f4e8a1336a220671ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &933732079
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,49 +959,6 @@ MonoBehaviour:
   Player1: {fileID: 1068150129}
   Player2: {fileID: 933732079}
   draw: {fileID: 592233529}
---- !u!1 &980996144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 980996146}
-  - component: {fileID: 980996145}
-  m_Layer: 0
-  m_Name: SceneControl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &980996145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980996144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af894261c98dd8a45810f5a92419600b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &980996146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980996144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 146.84103, y: 103.896286, z: 49.913025}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1068150129
 GameObject:
   m_ObjectHideFlags: 0
