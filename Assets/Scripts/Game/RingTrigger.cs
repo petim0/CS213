@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class RingTrigger : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
@@ -16,6 +18,17 @@ public class RingTrigger : MonoBehaviour
         
     }
      void OnTriggerEnter(Collider other){
-        Debug.Log(other.transform.parent.gameObject.name + " triggers.");
+
+
+        if (other.transform.parent.gameObject.CompareTag("Player1"))
+        {
+            PersistentManagerScript.Instance.player1Score++;
+
+        } else if (other.transform.parent.gameObject.CompareTag("Player2")) {
+
+            PersistentManagerScript.Instance.player2Score++;
+        }
+        
+        Debug.Log(other.transform.parent.gameObject.tag + " triggers.");
     }
 }
