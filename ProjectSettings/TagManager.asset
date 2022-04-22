@@ -7,6 +7,7 @@ TagManager:
   - Player1
   - Player2
   - ghost
+  - Map
   layers:
   - Default
   - TransparentFX
