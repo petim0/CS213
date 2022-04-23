@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class CollectorGem : MonoBehaviour
 {
-    public GameObject player;
 
-    void OnTriggerEnter(Collider collision)
+   public GameObject gameobject;
+
+   private void OnTriggerEnter(Collider other)
     {
-        if (collision.GetComponent<Collider>() == CollideWith)
+        CollectorPlayer collectorPlayer = other.GetComponent<CollectorPlayer>();
+
+        if(collectorPlayer != null)
         {
-            CollideWith.SendMessage(OnTriggerEnterMessage, SendMessageOptions.DontRequireReceiver);
-            if (SendToSelf == true)
-            {
-                this.SendMessage(MessageToSelf, SendMessageOptions.DontRequireReceiver);
-            }
+            collectorPlayer.DiamondCollected();
+            gameObject.SetActive(false);
         }
-    }
-
-    void Update()
-    {
-        OnTriggerEnter(player);
     }
 }
