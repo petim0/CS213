@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CollectorGem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject player;
+
+    void OnTriggerEnter(Collider collision)
     {
-        
+        if (collision.GetComponent<Collider>() == CollideWith)
+        {
+            CollideWith.SendMessage(OnTriggerEnterMessage, SendMessageOptions.DontRequireReceiver);
+            if (SendToSelf == true)
+            {
+                this.SendMessage(MessageToSelf, SendMessageOptions.DontRequireReceiver);
+            }
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        OnTriggerEnter(player);
     }
 }
