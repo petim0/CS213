@@ -143,7 +143,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013656696560}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b3590e1e4b0ad5636b0613d5904607b3, type: 3}
@@ -246,6 +246,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnzone: {fileID: 0}
   gems: {fileID: 1000013656696560}
-  spawnTime: 10
-  spawnDelay: 1
+  spawnDelay: 10
   audioSpawn: {fileID: 8300000, guid: b3590e1e4b0ad5636b0613d5904607b3, type: 3}
