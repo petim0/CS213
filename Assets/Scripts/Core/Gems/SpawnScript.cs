@@ -6,7 +6,7 @@ public class SpawnScript : MonoBehaviour
 {
     public GameObject spawnzone;
     public GameObject gems;
-    private float spawnTime = 120;        
+    public float spawnTime;        
     public float spawnDelay;
     public AudioClip audioSpawn;
     AudioSource aud;
