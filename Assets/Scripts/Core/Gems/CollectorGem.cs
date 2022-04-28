@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CollectorGem : MonoBehaviour
 {
-    CollectorPlayer player1;
-    CollectorPlayer player2;
+    public SpawnScript spawner;
     public AudioSource aud;
-
 
 
     public void OnTriggerEnter(Collider other)
@@ -15,19 +13,16 @@ public class CollectorGem : MonoBehaviour
 
         if (other.gameObject.transform.tag.CompareTo("Player1") == 1)
         {
-            player1 = other.gameObject.GetComponentInParent<CollectorPlayer>(); 
-            aud.Play();
+            other.gameObject.GetComponentInParent<CollectorPlayer>().DiamondCollected();
+            spawner.GetComponent<SpawnScript>().PlaySpawn();
             gameObject.SetActive(false);
-            player1.DiamondCollected();
 
         }
         else if(other.gameObject.transform.tag.CompareTo("Player2") == 1)
         {
-            other.gameObject.GetComponentInParent<CollectorPlayer>().DiamondCollected(); ;
-            aud.Play();
+            other.gameObject.GetComponentInParent<CollectorPlayer>().DiamondCollected();
+            spawner.GetComponent<SpawnScript>().PlaySpawn();
             gameObject.SetActive(false);
-
-
         }
     }
 }
