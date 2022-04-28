@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 23000011085638434}
   - component: {fileID: 114000010769974528}
   - component: {fileID: 1708583897}
-  - component: {fileID: 1708583898}
-  - component: {fileID: 6825617970353969754}
   - component: {fileID: 2030710114}
+  - component: {fileID: -5949698667868090894}
   m_Layer: 0
   m_Name: Diamondo5side
   m_TagString: Untagged
@@ -123,7 +122,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: -0.5}
---- !u!82 &1708583898
+--- !u!114 &2030710114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013656696560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73bf08dd3abb004b8364eedbc13ed49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameobject: {fileID: 1000013656696560}
+  aud: {fileID: -5949698667868090894}
+--- !u!82 &-5949698667868090894
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,32 +232,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6825617970353969754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013656696560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edfc20db2ad6c1746bc56493261bfcd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnzone: {fileID: 0}
-  gems: {fileID: 1000013656696560}
-  spawnDelay: 5
-  audioSpawn: {fileID: 8300000, guid: b3590e1e4b0ad5636b0613d5904607b3, type: 3}
---- !u!114 &2030710114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013656696560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d73bf08dd3abb004b8364eedbc13ed49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameobject: {fileID: 1000013656696560}
