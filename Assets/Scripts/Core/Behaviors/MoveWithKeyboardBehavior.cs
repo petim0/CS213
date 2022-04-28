@@ -70,8 +70,11 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
                     pos.y = gameObject.transform.position.y;
 
                     Vector3 direction = pos - gameObject.transform.position;
+                    Debug.Log(direction.ToString());
+
                     // Juste pour empecher qu'il fasse des aller retours si on laisse la souris sur le cellulo
                     if (direction.magnitude < 0.1) {
+                        Debug.Log("magnitude ils too small");
                         direction = Vector3.zero;
                     }
                     direction.Normalize();
@@ -84,8 +87,6 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
              {
                     mooving = false;
              }
-
-             //Debug.Log("player direction: " + steering.linear.ToString());
         }
       
         return steering;
