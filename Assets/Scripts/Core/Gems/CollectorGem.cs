@@ -5,7 +5,6 @@ using UnityEngine;
 public class CollectorGem : MonoBehaviour
 {
     public SpawnScript spawner;
-    public AudioSource aud;
 
 
     public void OnTriggerEnter(Collider other)
@@ -14,14 +13,14 @@ public class CollectorGem : MonoBehaviour
         if (other.gameObject.transform.tag.CompareTo("Player1") == 1)
         {
             other.gameObject.GetComponentInParent<CollectorPlayer>().DiamondCollected();
-            spawner.GetComponent<SpawnScript>().PlaySpawn();
+            spawner.GetComponent<SpawnScript>().PlayAud();
             gameObject.SetActive(false);
 
         }
         else if(other.gameObject.transform.tag.CompareTo("Player2") == 1)
         {
             other.gameObject.GetComponentInParent<CollectorPlayer>().DiamondCollected();
-            spawner.GetComponent<SpawnScript>().PlaySpawn();
+            spawner.GetComponent<SpawnScript>().PlayAud();
             gameObject.SetActive(false);
         }
     }

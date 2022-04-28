@@ -2107,7 +2107,7 @@ PrefabInstance:
     - target: {fileID: 2030710114, guid: cd34118c604e29141afea74caecd70f2, type: 3}
       propertyPath: aud
       value: 
-      objectReference: {fileID: 1440423489}
+      objectReference: {fileID: 0}
     - target: {fileID: 2030710114, guid: cd34118c604e29141afea74caecd70f2, type: 3}
       propertyPath: spawner
       value: 
@@ -2175,6 +2175,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: cd34118c604e29141afea74caecd70f2, type: 3}
 --- !u!4 &1440423487 stripped
 Transform:
@@ -2184,11 +2185,6 @@ Transform:
 --- !u!1 &1440423488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013656696560, guid: cd34118c604e29141afea74caecd70f2, type: 3}
-  m_PrefabInstance: {fileID: 1440423486}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1440423489 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -5949698667868090894, guid: cd34118c604e29141afea74caecd70f2, type: 3}
   m_PrefabInstance: {fileID: 1440423486}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1469719192 stripped
@@ -2701,7 +2697,7 @@ PrefabInstance:
     - target: {fileID: 2030710114, guid: cd34118c604e29141afea74caecd70f2, type: 3}
       propertyPath: aud
       value: 
-      objectReference: {fileID: 2030710120}
+      objectReference: {fileID: 0}
     - target: {fileID: 2030710114, guid: cd34118c604e29141afea74caecd70f2, type: 3}
       propertyPath: spawner
       value: 
@@ -2759,6 +2755,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: cd34118c604e29141afea74caecd70f2, type: 3}
@@ -3100,11 +3097,6 @@ MeshFilter:
 --- !u!1 &2030710113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013656696560, guid: cd34118c604e29141afea74caecd70f2, type: 3}
-  m_PrefabInstance: {fileID: 1715595748}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &2030710120 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -5949698667868090894, guid: cd34118c604e29141afea74caecd70f2, type: 3}
   m_PrefabInstance: {fileID: 1715595748}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2103534830
