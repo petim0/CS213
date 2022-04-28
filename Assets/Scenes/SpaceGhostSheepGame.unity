@@ -2176,6 +2176,7 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 2030710114, guid: cd34118c604e29141afea74caecd70f2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cd34118c604e29141afea74caecd70f2, type: 3}
 --- !u!4 &1440423487 stripped
 Transform:
@@ -2187,6 +2188,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013656696560, guid: cd34118c604e29141afea74caecd70f2, type: 3}
   m_PrefabInstance: {fileID: 1440423486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1440423489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440423488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161082b65be538848a77d095189d205e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 13701529}
+  manager: {fileID: 1645238992}
 --- !u!1 &1469719192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4052793752220753789, guid: 6f5f6d7624c2ce5cc8896e584e30f1c5, type: 3}
@@ -2480,6 +2495,7 @@ MonoBehaviour:
   player1Text: {fileID: 1913924803}
   player2Text: {fileID: 143945195}
   time: {fileID: 1706435678}
+  ftime: 0
 --- !u!4 &1645238993
 Transform:
   m_ObjectHideFlags: 0
@@ -2586,7 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1Score: 0
-  player2Score: 0
+  player2Score: -1
 --- !u!4 &1684336780
 Transform:
   m_ObjectHideFlags: 0

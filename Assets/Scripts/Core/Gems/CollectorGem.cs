@@ -6,7 +6,6 @@ public class CollectorGem : MonoBehaviour
 {
     public SpawnScript spawner;
 
-
     public void OnTriggerEnter(Collider other)
     {
 

@@ -36,7 +36,7 @@ public class CollectorPlayer : MonoBehaviour
             PersistentManagerScript.Instance.player2Score -= 2;
             NotCollectedYet();
         }
-        
-
     }
+
+
 }

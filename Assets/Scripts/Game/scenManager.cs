@@ -11,15 +11,24 @@ public class scenManager : MonoBehaviour
     public Text player1Text;
     public Text player2Text;
     public Text time;
-    private float ftime = 0;
+    public float ftime = 0;
 
+    public void IncreaseTime()
+    {
+        ftime = ftime  + ftime * 0.05f ;
+    }
+
+    public void DecreaseTime()
+    {
+        ftime = ftime * 0.95f;
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         PersistentManagerScript.Instance.player1Score = 0;
         PersistentManagerScript.Instance.player2Score = 0;
-
         player1Text.text = PersistentManagerScript.Instance.player1Score.ToString("00");
         player2Text.text = PersistentManagerScript.Instance.player2Score.ToString("00");
         time.text = "Timer: 00:00";
