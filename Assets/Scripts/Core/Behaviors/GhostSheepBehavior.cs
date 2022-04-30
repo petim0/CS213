@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class GhostSheepBehavior : AgentBehaviour
 {    
     const string ennemiesTag1 = "Player1";
@@ -15,8 +16,13 @@ public class GhostSheepBehavior : AgentBehaviour
     Color colorSheep = new Color(0, 255, 0);    
     Color colorGhost = new Color(255, 0, 0);
 
-    
 
+    //TODO faire accéder cette classe à son cellulo => qd il devient ghost, changer sa couleur 
+    //Questions: 
+    //à faire ici ou sur une autre classe ?
+
+    
+    private CelluloAgent cellulo;
     public AudioSource myAudioSource;
     public AudioSource myAudioSheep;
     public AudioSource soundLoosePoint;
@@ -33,6 +39,7 @@ public class GhostSheepBehavior : AgentBehaviour
         ennemies = new GameObject[ennemies1.Length + ennemies2.Length];
         ennemies1.CopyTo(ennemies, 0);
         ennemies2.CopyTo(ennemies, ennemies1.Length);
+        cellulo = gameObject.GetComponent<CelluloAgent>();
 
         Invoke("switchBehavior", Random.Range(minGhostTimer, maxGhostTimer));
         agent.SetVisualEffect(0, colorSheep, 0);   
@@ -100,6 +107,7 @@ public class GhostSheepBehavior : AgentBehaviour
         if (isGhost) {
             // Set the led for the Ghost
             agent.SetVisualEffect(0, colorGhost, 0);
+            cellulo.SetVisualEffect(VisualEffect.VisualEffectConstAll, colorGhost, 5);
          
             myAudioSource.Play();
             
@@ -109,6 +117,8 @@ public class GhostSheepBehavior : AgentBehaviour
         } else {
             // Set the let for the Sheep
             agent.SetVisualEffect(0, colorSheep, 0);
+            cellulo.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorSheep, 5);
+
             Debug.Log("Triggered by 2");
 
             myAudioSheep.Play();

@@ -4,10 +4,14 @@ public class AgentBehaviour : MonoBehaviour
 {
     public float weight = 1.0f;
     protected CelluloAgent agent;
+    private Cellulo robot;
+
 
     public virtual void Awake()
     {
         agent = gameObject.GetComponent<CelluloAgent>();
+        robot = agent._celluloRobot;
+
         if(agent==null){
             Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
         }
@@ -38,7 +42,11 @@ public class AgentBehaviour : MonoBehaviour
     /// <param name="key">
     /// the number of the key touch sensor 
     /// </param>
-    public virtual void OnCelluloLongTouch(int key){}
+    public virtual void OnCelluloLongTouch(int key){
+
+       //TODO agent._celluloRobot.OnLongTouch;
+       //subscribe to  _celluloRobot.OnLongTouch
+    }
     
     /// <summary>
     /// Event signaled when robot kidnapping ends 
@@ -48,5 +56,19 @@ public class AgentBehaviour : MonoBehaviour
     /// Event signaled when robot is kidnapped
     /// </summary>
     public virtual void OnCelluloKidnapped(){}
+
+    public virtual void OnCelluloGhost(){
+        if(this.tag == "dog"){
+             agent.MoveOnStone();
+        }
+    }
+
+    public virtual void OnCelluloSheep(){
+        if(this.tag == "dog"){
+           // agent.ResetOnClick(); //on doit reset pour enlever le moveOnStone ?
+            robot.SetCasualBackdriveAssistEnabled(true);
+
+        }
+    }
 
 }
