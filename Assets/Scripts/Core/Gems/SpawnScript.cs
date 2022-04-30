@@ -11,6 +11,14 @@ public class SpawnScript : MonoBehaviour
     public AudioClip audioSpawn;
     AudioSource aud;
 
+    //Auxiliary method because we want to use it for CollectorGem and it doesn't work if we add an AudioSource to CollectorGem
+    public void PlayAud()
+    {
+        aud = GetComponent<AudioSource>();
+        aud.PlayOneShot(audioSpawn, 0.7F);
+
+    }
+
     void Start()
     {
         InvokeRepeating("Spawn", spawnDelay,spawnTime);        
@@ -18,13 +26,14 @@ public class SpawnScript : MonoBehaviour
 
     void Spawn()
     {
-        aud = GetComponent<AudioSource>();
-        aud.PlayOneShot(audioSpawn, 0.7F);
+        PlayAud();
         float x = Random.Range(spawnzone.GetComponent<BoxCollider>().bounds.min.x + 2, spawnzone.GetComponent<BoxCollider>().bounds.max.x - 2);
         float z = Random.Range(spawnzone.GetComponent<BoxCollider>().bounds.min.z + 2, spawnzone.GetComponent<BoxCollider>().bounds.max.z - 2);
         Vector3 position = new Vector3(x, 136.5f, z);
         Instantiate(gems, position, transform.rotation);
     }
+
+
 
 } 
  
