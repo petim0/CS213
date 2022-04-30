@@ -29,7 +29,7 @@ public class SpawnScript : MonoBehaviour
         PlayAud();
         float x = Random.Range(spawnzone.GetComponent<BoxCollider>().bounds.min.x + 2, spawnzone.GetComponent<BoxCollider>().bounds.max.x - 2);
         float z = Random.Range(spawnzone.GetComponent<BoxCollider>().bounds.min.z + 2, spawnzone.GetComponent<BoxCollider>().bounds.max.z - 2);
-        Vector3 position = new Vector3(x, 136.5f, z);
+        Vector3 position = new Vector3(x, 1, z);
         Instantiate(gems, position, transform.rotation);
     }
 
