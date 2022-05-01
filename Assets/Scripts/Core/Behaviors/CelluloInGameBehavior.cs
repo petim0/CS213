@@ -29,15 +29,14 @@ public class CelluloInGameBehavior : AgentBehaviour
         if(this.tag == "sheep"){
             OnCelluloSheep();
         }else if (this.tag == "ghost"){
-
+            OnCelluloGhost();
         }
     }
 
     public override void OnCelluloLongTouch(int key){
         //passer le booléen à true pour que launchGameCellulos sache que le joueur est pret
        playerConnected = true;
-       agent.ClearHapticFeedback(); //reset le robot avant de commencer le jeu si jamais
-                                    //il a toujours les paramétrages d'une ancienne partie
+         
     }
 
 
@@ -55,5 +54,9 @@ public class CelluloInGameBehavior : AgentBehaviour
     public bool isPlayerConnected(){
         return this.playerConnected;
     }
+
+    //public override void OnCollisionEnter(Collision collision){
+        //pas nécessaire selon @58
+  //  }
 
 }
