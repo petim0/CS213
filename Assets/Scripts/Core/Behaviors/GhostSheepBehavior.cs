@@ -22,6 +22,8 @@ public class GhostSheepBehavior : AgentBehaviour
     //à faire ici ou sur une autre classe ?
 
     
+    public CelluloInGameBehavior cellulo1;
+    public CelluloInGameBehavior cellulo2;
     private CelluloAgent cellulo;
     public AudioSource myAudioSource;
     public AudioSource myAudioSheep;
@@ -110,6 +112,9 @@ public class GhostSheepBehavior : AgentBehaviour
             cellulo.SetVisualEffect(VisualEffect.VisualEffectConstAll, colorGhost, 5);
          
             myAudioSource.Play();
+
+            cellulo1.OnCelluloGhost();
+            cellulo1.OnCelluloGhost();
             
             Debug.Log("Triggered by 1");
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
@@ -122,6 +127,9 @@ public class GhostSheepBehavior : AgentBehaviour
             Debug.Log("Triggered by 2");
 
             myAudioSheep.Play();
+
+            cellulo2.OnCelluloSheep();
+            cellulo2.OnCelluloSheep();
             
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 

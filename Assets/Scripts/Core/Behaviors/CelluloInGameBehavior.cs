@@ -5,32 +5,33 @@ using UnityEngine;
 public class CelluloInGameBehavior : AgentBehaviour
 {
 
-    public CelluloAgent agent; //mis en public pour quil puisse etre accessed par launchGameCellulo
+    private CelluloAgent celluloAgent; 
     private Cellulo robot;
-    public bool playerConnected;
+    private bool playerConnected;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = gameObject.GetComponent<CelluloAgent>();
-        robot = agent._celluloRobot;
+        celluloAgent = gameObject.GetComponent<CelluloAgent>();
+        //ks
         playerConnected = false;
 
-        if(agent==null){
+        if(celluloAgent==null){
             Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
         }
+        OnCelluloSheep();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(this.tag == "sheep"){
+       /* if(this.tag == "sheep"){
             OnCelluloSheep();
         }else if (this.tag == "ghost"){
             OnCelluloGhost();
-        }
+        }*/
     }
 
     public override void OnCelluloLongTouch(int key){
@@ -41,18 +42,22 @@ public class CelluloInGameBehavior : AgentBehaviour
 
 
     
-    public override void OnCelluloGhost(){
-             agent.MoveOnStone();
+    public void OnCelluloGhost(){
+             celluloAgent.MoveOnStone();
     }
 
-    public override void OnCelluloSheep(){
+    public void OnCelluloSheep(){
         // agent.ResetOnClick(); //on doit reset pour enlever le moveOnStone ?
-        agent.ClearHapticFeedback();
-        agent.SetCasualBackdriveAssistEnabled(true);
+        celluloAgent.ClearHapticFeedback();
+        celluloAgent.SetCasualBackdriveAssistEnabled(true);
     }
 
     public bool isPlayerConnected(){
         return this.playerConnected;
+    }
+
+    public CelluloAgent getAgent(){
+        return this.celluloAgent;
     }
 
     //public override void OnCollisionEnter(Collision collision){
