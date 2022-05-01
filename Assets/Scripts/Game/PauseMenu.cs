@@ -6,32 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu: MonoBehaviour
 {
-    public GameObject pMenu;
+    public GameObject pauseMenu;
     public static bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
-        pMenu.SetActive(false);
+        Debug.Log("START");
+        Debug.Log(pauseMenu == null);
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        Debug.Log("update");
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log("gotEscape");
             if (isPaused){
                 resumeGame();
-            } else pauseGame();
+            } else {
+                pauseGame();
+                Debug.Log("paused");
+            }
         }
     }
 
     public void resumeGame(){
-        pMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void pauseGame(){
-        pMenu.SetActive(false);
+        pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }

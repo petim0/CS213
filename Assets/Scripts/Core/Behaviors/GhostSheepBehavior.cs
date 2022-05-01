@@ -13,6 +13,7 @@ public class GhostSheepBehavior : AgentBehaviour
     const float minSwitchBackTimer = 15.0f;
     const float maxSwitchBackTimer = 30.0f;
     
+
     Color colorSheep = new Color(0, 255, 0);    
     Color colorGhost = new Color(255, 0, 0);
 
@@ -114,7 +115,7 @@ public class GhostSheepBehavior : AgentBehaviour
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
         } else {
-            // Set the let for the Sheep
+            // Set the led for the Sheep
             agent.SetVisualEffect(0, colorSheep, 0);
             cellulo.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorSheep, 5);
 

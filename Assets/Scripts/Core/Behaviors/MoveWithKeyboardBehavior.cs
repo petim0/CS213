@@ -12,12 +12,18 @@ public enum InputKeyboard{
 
 public class MoveWithKeyboardBehavior : AgentBehaviour
 {
-    public InputKeyboard inputKeyboard;
+    private InputKeyboard inputKeyboard;
 
     private Vector3 _target;
     public Camera Camera;
 
     private bool mooving = false;
+
+    void Start(){
+        if (this.gameObject.CompareTag("Player1")){
+            inputKeyboard = PersistentManagerScript.Instance.p1Controls;
+        }
+    }
 
     public void OnEnable()
     {
