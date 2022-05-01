@@ -5,19 +5,19 @@ using UnityEngine;
 public class CelluloInGameBehavior : AgentBehaviour
 {
 
-    public CelluloAgent agent; //mis en public pour quil puisse etre accessed par launchGameCellulo
+    private CelluloAgent celluloAgent; 
     private Cellulo robot;
-    public bool playerConnected;
+    private bool playerConnected;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = gameObject.GetComponent<CelluloAgent>();
-        robot = agent._celluloRobot;
+        celluloAgent = gameObject.GetComponent<CelluloAgent>();
+        //ks
         playerConnected = false;
 
-        if(agent==null){
+        if(celluloAgent==null){
             Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
         }
     }
@@ -42,17 +42,21 @@ public class CelluloInGameBehavior : AgentBehaviour
 
     
     public void OnCelluloGhost(){
-             agent.MoveOnStone();
+             celluloAgent.MoveOnStone();
     }
 
     public void OnCelluloSheep(){
         // agent.ResetOnClick(); //on doit reset pour enlever le moveOnStone ?
-        agent.ClearHapticFeedback();
-        agent.SetCasualBackdriveAssistEnabled(true);
+        celluloAgent.ClearHapticFeedback();
+        celluloAgent.SetCasualBackdriveAssistEnabled(true);
     }
 
     public bool isPlayerConnected(){
         return this.playerConnected;
+    }
+
+    public CelluloAgent getAgent(){
+        return this.celluloAgent;
     }
 
     //public override void OnCollisionEnter(Collision collision){

@@ -8,9 +8,9 @@ public class LaunchGameCellulo : AgentBehaviour
 {
     private bool player1Connected;
     private bool player2Connected;
-    public bool gameLaunched;
-    private CelluloInGameBehavior cellulo1;
-    private CelluloInGameBehavior cellulo2;
+    private bool gameLaunched;
+    public CelluloInGameBehavior cellulo1;
+    public CelluloInGameBehavior cellulo2;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +29,10 @@ public class LaunchGameCellulo : AgentBehaviour
         if(gameLaunched == false){  //checks si le jeu est lancé, si non, vérifie que les 2 joueurs sont prets
                                     // si c'est le cas, change gameLaunched et change de scène.
             if(player1Connected && player2Connected){
-            cellulo1.agent.ClearHapticFeedback();
-            cellulo2.agent.ClearHapticFeedback();
+            //reset le robot avant de commencer le jeu si jamais
+            //il a toujours les paramétrages d'une ancienne partie
+            cellulo1.getAgent().ClearHapticFeedback();
+            cellulo2.getAgent().ClearHapticFeedback();
             SceneManager.LoadScene(1);
             gameLaunched = true; 
             }
