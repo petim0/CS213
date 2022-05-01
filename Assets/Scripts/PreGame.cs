@@ -9,7 +9,7 @@ public class PreGame : MonoBehaviour
     public ToggleGroup toggleGroup1;
     public ToggleGroup toggleGroup2;
 
-    public int gameTimer;
+    public Slider gameTimer;
 
     public Slider R1;
     public Slider G1;
@@ -118,6 +118,7 @@ public class PreGame : MonoBehaviour
 
     public void WriteToPManager(){
         //Debug.Log("test");
+        PersistentManagerScript.Instance.gameTime = gameTimer.value;
         PersistentManagerScript.Instance.p1Controls = (InputKeyboard) player1Controls();
         PersistentManagerScript.Instance.p2Controls = (InputKeyboard) player2Controls();
         PersistentManagerScript.Instance.initialColor1 = new Color(R1.value,G1.value, B1.value);
