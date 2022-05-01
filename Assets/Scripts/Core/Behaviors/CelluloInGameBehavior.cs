@@ -43,13 +43,22 @@ public class CelluloInGameBehavior : AgentBehaviour
 
     
     public void OnCelluloGhost(){
-             celluloAgent.MoveOnStone();
+          if(celluloAgent==null){
+            Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
+        }else{
+             agent.MoveOnStone();
+        }
     }
 
     public void OnCelluloSheep(){
         // agent.ResetOnClick(); //on doit reset pour enlever le moveOnStone ?
-        celluloAgent.ClearHapticFeedback();
-        celluloAgent.SetCasualBackdriveAssistEnabled(true);
+        if(celluloAgent==null){
+            Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
+        }else{
+            agent.ClearHapticFeedback();
+            agent.SetCasualBackdriveAssistEnabled(true);
+         }
+ 
     }
 
     public bool isPlayerConnected(){

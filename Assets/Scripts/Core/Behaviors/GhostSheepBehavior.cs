@@ -18,11 +18,11 @@ public class GhostSheepBehavior : AgentBehaviour
     Color colorGhost = new Color(255, 0, 0);
 
 
-    //TODO faire accéder cette classe à son cellulo => qd il devient ghost, changer sa couleur 
-    //Questions: 
-    //à faire ici ou sur une autre classe ?
+  
 
     
+    public CelluloInGameBehavior cellulo1;
+    public CelluloInGameBehavior cellulo2;
     private CelluloAgent cellulo;
     public AudioSource myAudioSource;
     public AudioSource myAudioSheep;
@@ -109,9 +109,12 @@ public class GhostSheepBehavior : AgentBehaviour
             // Set the led for the Ghost
             agent.SetVisualEffect(0, colorGhost, 0);
             cellulo.SetVisualEffect(VisualEffect.VisualEffectConstAll, colorGhost, 5);
+
          
             myAudioSource.Play();
             
+            cellulo1.OnCelluloGhost();
+            cellulo2.OnCelluloGhost();
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
         } else {
@@ -120,6 +123,9 @@ public class GhostSheepBehavior : AgentBehaviour
             cellulo.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorSheep, 5);
 
             myAudioSheep.Play();
+
+            cellulo1.OnCelluloSheep();
+            cellulo2.OnCelluloSheep();
             
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
