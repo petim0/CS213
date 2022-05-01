@@ -20,17 +20,18 @@ public class CelluloInGameBehavior : AgentBehaviour
         if(celluloAgent==null){
             Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
         }
+        OnCelluloSheep();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(this.tag == "sheep"){
+       /* if(this.tag == "sheep"){
             OnCelluloSheep();
         }else if (this.tag == "ghost"){
             OnCelluloGhost();
-        }
+        }*/
     }
 
     public override void OnCelluloLongTouch(int key){
