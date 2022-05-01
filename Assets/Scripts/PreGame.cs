@@ -9,7 +9,7 @@ public class PreGame : MonoBehaviour
     public ToggleGroup toggleGroup1;
     public ToggleGroup toggleGroup2;
 
-    public int gameTimer;
+    public Slider gameTimer;
 
     public Slider R1;
     public Slider G1;
@@ -18,11 +18,6 @@ public class PreGame : MonoBehaviour
     public Slider R2;
     public Slider G2;
     public Slider B2;
-
-
-    //public Button playButton;
-
-
 
     public Toggle currentSelection1{
         get { return toggleGroup1.ActiveToggles().FirstOrDefault(); }
@@ -33,15 +28,7 @@ public class PreGame : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-//        toggleGroup1 = GetComponent<ToggleGroup>();
-//        toggleGroup2 = GetComponent<ToggleGroup>();
-
-
- //       Debug.Log("First selected" + currentSelection1.name);
-  //      Debug.Log("Second selected" + currentSelection2.name);
-    }
+    void Start(){}
 
     public int player1Controls(){
         string s = currentSelection1.name;
@@ -53,8 +40,6 @@ public class PreGame : MonoBehaviour
             return 1;
          
         } else {
-  //          Debug.Log("NAME: "+ s);
-  //          Debug.Log("NUUUUUUUUUUULLLLL");
             return -1;
         }
     }
@@ -69,8 +54,6 @@ public class PreGame : MonoBehaviour
             return 1;
          
         } else {
-   //         Debug.Log("NAME: "+ s);
-   //         Debug.Log("NUUUUUUUUUUULLLLL");
             return -1;
         }
     }
@@ -83,7 +66,6 @@ public class PreGame : MonoBehaviour
         } else if (currentSelection2.name.Equals("ARROW")){
             return InputKeyboard.arrows;
         } else {
-    //         Debug.Log("NUUUUUUUUUUULLLLL");
             return InputKeyboard.arrows;
         }
     }
@@ -95,17 +77,17 @@ public class PreGame : MonoBehaviour
         var toggles2 = toggleGroup2.GetComponentsInChildren<Toggle>();
         
         //Find wich controls are selected
+        if (currentSelection1 == null || currentSelection2 == null){
+            return;
+        }
+
         int id = player1Controls();
         if (id < 0 || id >= 3) {
             return;
         }
 
-    //    Debug.Log("--------------------------------");
-    //    Debug.Log("id: "+ id);
-
         //IF same controls selected, change controls of player 2
         if (toggles1[id].isOn == toggles2[id].isOn){
-            Debug.Log(" == ");
             toggles2[id].isOn = false;
             if (id < 2) {
                 toggles2[id + 1].isOn = true;
@@ -117,10 +99,11 @@ public class PreGame : MonoBehaviour
     }
 
     public void WriteToPManager(){
-        //Debug.Log("test");
+        PersistentManagerScript.Instance.gameTime = gameTimer.value;
         PersistentManagerScript.Instance.p1Controls = (InputKeyboard) player1Controls();
         PersistentManagerScript.Instance.p2Controls = (InputKeyboard) player2Controls();
         PersistentManagerScript.Instance.initialColor1 = new Color(R1.value,G1.value, B1.value);
+        PersistentManagerScript.Instance.initialColor2 = new Color(R2.value,G2.value, B2.value);
     }
 
 

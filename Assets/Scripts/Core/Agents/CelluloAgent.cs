@@ -29,6 +29,8 @@ public class CelluloAgent : SteeringAgent
         _leds = this.transform.Find("Leds").gameObject;
         if (this.gameObject.CompareTag("Player1")){
             initialColor = PersistentManagerScript.Instance.initialColor1;
+        } else if (this.gameObject.CompareTag("Player2")){
+            initialColor = PersistentManagerScript.Instance.initialColor2;
         }
         SetVisualEffect(0, initialColor, 0);
 

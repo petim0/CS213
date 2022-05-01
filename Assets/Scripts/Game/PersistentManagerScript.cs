@@ -7,6 +7,7 @@ public class PersistentManagerScript : MonoBehaviour
 {
     public static PersistentManagerScript Instance { get; private set; }
 
+    public float gameTime;
     public InputKeyboard p1Controls;
     public InputKeyboard p2Controls;
 

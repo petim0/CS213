@@ -13,6 +13,8 @@ public class scenManager : MonoBehaviour
     public Text time;
     public float ftime = 0;
 
+    public float gameMinutes;
+
     public void IncreaseTime()
     {
         ftime = ftime  + ftime * 0.05f ;
@@ -31,6 +33,7 @@ public class scenManager : MonoBehaviour
         PersistentManagerScript.Instance.player2Score = 0;
         player1Text.text = PersistentManagerScript.Instance.player1Score.ToString("00");
         player2Text.text = PersistentManagerScript.Instance.player2Score.ToString("00");
+        gameMinutes = PersistentManagerScript.Instance.gameTime;
         time.text = "Timer: 00:00";
     }
 
@@ -46,7 +49,7 @@ public class scenManager : MonoBehaviour
         time.text = string.Format("Timer: {0:00}:{1:00}", minutes, seconds);
 
 
-        if(minutes == 2){
+        if (minutes == gameMinutes){
             LoadGameOver();
         }
     }
