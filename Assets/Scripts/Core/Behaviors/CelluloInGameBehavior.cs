@@ -41,11 +41,11 @@ public class CelluloInGameBehavior : AgentBehaviour
 
 
     
-    public override void OnCelluloGhost(){
+    public void OnCelluloGhost(){
              agent.MoveOnStone();
     }
 
-    public override void OnCelluloSheep(){
+    public void OnCelluloSheep(){
         // agent.ResetOnClick(); //on doit reset pour enlever le moveOnStone ?
         agent.ClearHapticFeedback();
         agent.SetCasualBackdriveAssistEnabled(true);

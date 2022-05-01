@@ -58,7 +58,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
 
                     if (Physics.Raycast(pos, Vector3.down, out hit))
                     {
-                        Debug.Log("Found an object - nature: " + hit.collider.transform.parent.tag.ToString());
+                        //Debug.Log("Found an object - nature: " + hit.collider.transform.parent.tag.ToString());
                         if (hit.collider.transform.parent.tag.CompareTo(gameObject.transform.tag) == 0)
                         {
                             mooving = true;
@@ -70,11 +70,11 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
                     pos.y = gameObject.transform.position.y;
 
                     Vector3 direction = pos - gameObject.transform.position;
-                    Debug.Log(direction.ToString());
+                    //Debug.Log(direction.ToString());
 
                     // Juste pour empecher qu'il fasse des aller retours si on laisse la souris sur le cellulo
                     if (direction.magnitude < 0.1) {
-                        Debug.Log("magnitude ils too small");
+                        //Debug.Log("magnitude ils too small");
                         direction = Vector3.zero;
                     }
                     direction.Normalize();

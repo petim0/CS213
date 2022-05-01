@@ -111,15 +111,12 @@ public class GhostSheepBehavior : AgentBehaviour
          
             myAudioSource.Play();
             
-            Debug.Log("Triggered by 1");
             Invoke("switchBehavior", Random.Range(minSwitchBackTimer, maxSwitchBackTimer));
 
         } else {
             // Set the let for the Sheep
             agent.SetVisualEffect(0, colorSheep, 0);
             cellulo.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorSheep, 5);
-
-            Debug.Log("Triggered by 2");
 
             myAudioSheep.Play();
             
@@ -175,8 +172,6 @@ public class GhostSheepBehavior : AgentBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        Debug.Log(isGhost);
-        Debug.Log(collision.collider.transform.parent.gameObject.tag);
         if (isGhost) {
             if (collision.collider.transform.parent.gameObject.CompareTag(ennemiesTag1)){
                 PersistentManagerScript.Instance.player1Score--;
