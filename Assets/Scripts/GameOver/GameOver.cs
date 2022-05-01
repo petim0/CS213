@@ -47,9 +47,4 @@ public class GameOver : MonoBehaviour
         }
     }
 
-   /* void resetGameState(string sceneToLoad){
-        SceneManager.LoadScene(sceneToLoad);
-        PersistentManagerScript.Instance.player1Score = 0;
-        PersistentManagerScript.Instance.player2Score = 0;
-    }*/
 }
