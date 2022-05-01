@@ -41,7 +41,7 @@ public class CelluloInGameBehavior : AgentBehaviour
           if(celluloAgent==null){
             Debug.LogWarning("An active CelluloAgent should be attached to the same gameobject.");
         }else{
-             agent.MoveOnStone();
+            agent.MoveOnStone();
         }
     }
 

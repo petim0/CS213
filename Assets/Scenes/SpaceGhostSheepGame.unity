@@ -991,19 +991,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameobject: {fileID: 504168187}
---- !u!114 &504168190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504168187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ba4f28261c09c41a5062147bac66d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
 --- !u!1001 &547963528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1212,7 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1
   cellulo1: {fileID: 1469719194}
-  cellulo2: {fileID: 504168190}
+  cellulo2: {fileID: 0}
   myAudioSource: {fileID: 695848614}
   myAudioSheep: {fileID: 695848617}
   soundLoosePoint: {fileID: 695848619}
@@ -3584,7 +3571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20700002, y: 0.93600005}
   m_AnchorMax: {x: 0.20700002, y: 0.9542914}
-  m_AnchoredPosition: {x: -0.3870163, y: 4}
+  m_AnchoredPosition: {x: -0.38702393, y: 4}
   m_SizeDelta: {x: 80.6472, y: 33.8369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913924803
