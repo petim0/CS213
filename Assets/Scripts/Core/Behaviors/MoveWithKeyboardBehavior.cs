@@ -22,6 +22,8 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
     void Start(){
         if (this.gameObject.CompareTag("Player1")){
             inputKeyboard = PersistentManagerScript.Instance.p1Controls;
+        } else if (this.gameObject.CompareTag("Player2")){
+            inputKeyboard = PersistentManagerScript.Instance.p2Controls;
         }
     }
 
