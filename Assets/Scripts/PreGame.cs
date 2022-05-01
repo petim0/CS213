@@ -58,18 +58,6 @@ public class PreGame : MonoBehaviour
         }
     }
 
-    public InputKeyboard player2ControlsKey(){
-        if (currentSelection2.name.Equals("WASD")){
-            return InputKeyboard.wasd;
-        } else if (currentSelection2.name.Equals("MOUSE")) {
-            return InputKeyboard.mouse;
-        } else if (currentSelection2.name.Equals("ARROW")){
-            return InputKeyboard.arrows;
-        } else {
-            return InputKeyboard.arrows;
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -77,9 +65,11 @@ public class PreGame : MonoBehaviour
         var toggles2 = toggleGroup2.GetComponentsInChildren<Toggle>();
         
         //Find wich controls are selected
+        
         if (currentSelection1 == null || currentSelection2 == null){
             return;
         }
+        
 
         int id = player1Controls();
         if (id < 0 || id >= 3) {

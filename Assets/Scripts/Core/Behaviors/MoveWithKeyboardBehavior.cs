@@ -38,12 +38,15 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
 
     public override Steering GetSteering()
     {
+
         Steering steering = new Steering();
         //implement your code here
         if ((int) inputKeyboard == 0)
         {
+            
             steering.linear = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * agent.maxAccel;
             steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, agent.maxAccel));
+
         }
         else if ((int) inputKeyboard == 1)
         {
@@ -96,7 +99,12 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
                     mooving = false;
              }
         }
-      
+
+        if (this.gameObject.CompareTag("Player2"))
+        {
+            Debug.Log(steering.linear.ToString());
+        }
+
         return steering;
     }
 }

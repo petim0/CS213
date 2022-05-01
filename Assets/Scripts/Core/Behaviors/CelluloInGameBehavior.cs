@@ -6,7 +6,6 @@ public class CelluloInGameBehavior : AgentBehaviour
 {
 
     private CelluloAgent celluloAgent; 
-    private Cellulo robot;
     private bool playerConnected;
 
 
@@ -27,11 +26,7 @@ public class CelluloInGameBehavior : AgentBehaviour
     void Update()
     {
 
-       /* if(this.tag == "sheep"){
-            OnCelluloSheep();
-        }else if (this.tag == "ghost"){
-            OnCelluloGhost();
-        }*/
+      
     }
 
     public override void OnCelluloLongTouch(int key){
@@ -68,9 +63,4 @@ public class CelluloInGameBehavior : AgentBehaviour
     public CelluloAgent getAgent(){
         return this.celluloAgent;
     }
-
-    //public override void OnCollisionEnter(Collision collision){
-        //pas nécessaire selon @58
-  //  }
-
 }
